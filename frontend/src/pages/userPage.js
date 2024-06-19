@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Heading, Text, Card, Inset } from '@radix-ui/themes';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 
 
 function UserPage() {
@@ -37,6 +39,9 @@ function UserPage() {
   }, []);
 
   return (
+    <><Navbar/>
+    <br></br>
+    <br></br>
     
     <Box
     maxWidth="500px"
@@ -74,6 +79,10 @@ function UserPage() {
       )}
     </Card>
   </Box>
+  <br></br>
+  <br></br>
+  <Footer/>
+  </>
   );
 }
 

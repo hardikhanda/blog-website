@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 function CreatePost() {
   const [formData, setFormData] = useState({
     title: '',
@@ -92,6 +93,8 @@ function CreatePost() {
 
   return (
     <div>
+      <Navbar/>
+      <br></br>
       <h1 className="text-3xl font-bold text-center mb-6">Create New Post</h1>
       <form onSubmit={handleSubmit} className="max-w-lg mx-auto">
         <div className="mb-4">
@@ -149,6 +152,8 @@ function CreatePost() {
           Back to Dashboard
         </Link>
       </div>
+      <br></br>
+      <Footer/>
     </div>
   );
 }

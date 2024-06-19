@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/navbar';
-import { logout } from '../helper/logout';
+import Footer from '../components/footer';
+
 
 function Dashboard() {
   const [userData, setUserData] = useState(null);
@@ -137,7 +138,9 @@ function Dashboard() {
             </div>
           </div>
         </div>
+        
       )}
+      <Footer/>
     </div>
   );
 }

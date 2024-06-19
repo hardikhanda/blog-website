@@ -1,0 +1,1 @@
+<h1>this is the page displayed for each individual post</h1>

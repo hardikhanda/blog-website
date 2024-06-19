@@ -12,6 +12,8 @@ import {
 } from '@radix-ui/themes';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 
 
 
@@ -62,6 +64,9 @@ function Login() {
 
 
   return (
+    <>
+    <Navbar/>
+    <br></br>
     <Flex flexShrink="0" gap="6" direction="column" width="416px" style={{ margin: 'auto', marginTop: '20px' }}>
       <Card size="4">
         <form onSubmit={handleSubmit}>
@@ -112,6 +117,11 @@ function Login() {
         </form>
       </Card>
     </Flex>
+    <br></br>
+    <br>
+    </br>
+    <Footer/>
+    </>
 
   );
 }

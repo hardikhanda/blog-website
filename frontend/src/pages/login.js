@@ -46,7 +46,7 @@ function Login() {
         localStorage.setItem('refreshToken', refresh_token);
         
         const userName = user.name;
-        navigate('/dashboard');
+        navigate('/home');
         console.log("Successfully Logged In");
       } else {
 

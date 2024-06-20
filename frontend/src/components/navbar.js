@@ -13,7 +13,7 @@ import { Link } from 'react-router-dom';
 import { logout } from '../helper/logout';
 
 const navigation = [
-  { name: 'Home', href: '/', current: false },
+  { name: 'Home', href: '/home', current: false },
   { name: 'About', href: '/about', current: false },
   { name: 'Dashboard', href: '/dashboard', current: true },
 ];

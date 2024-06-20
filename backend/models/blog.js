@@ -1,3 +1,4 @@
+
 import mongoose from 'mongoose';
 
 const PostSchema = new mongoose.Schema({
@@ -25,6 +26,10 @@ const PostSchema = new mongoose.Schema({
   },
   updatedAt: {
     type: Date,
+  },
+  likes: {
+    type: Number,
+    default: 0,
   },
   comments: [
     {

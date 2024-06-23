@@ -8,6 +8,9 @@ import Dashboard from './pages/dashboard';
 import UserPage from './pages/userPage';
 import CreatePost from './pages/createPost';
 import Home from './pages/home';
+import About from './pages/about';
+import PostDetail from './pages/PostDetail'
+import EditPost from './pages/EditPost';
 
 function App() {
   return (
@@ -17,11 +20,14 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/create-post" element={<CreatePost/>}/>
+            <Route path="/edit-post/:postId" element={<EditPost />} />
             <Route path="/dashboard/user" element={<UserPage />} />
+            <Route path="/posts/:postId" element={<PostDetail />} />
           </Routes>
         </div>
       </BrowserRouter>

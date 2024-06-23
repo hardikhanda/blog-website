@@ -1,21 +1,13 @@
-import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  Transition,
-} from '@headlessui/react';
+import React, { useEffect, useState } from 'react';
+import { Disclosure, Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { logout } from '../helper/logout';
 
-const navigation = [
+const initialNavigation = [
   { name: 'Home', href: '/home', current: false },
+  { name: 'Dashboard', href: '/dashboard', current: false },
   { name: 'About', href: '/about', current: false },
-  { name: 'Dashboard', href: '/dashboard', current: true },
 ];
 
 function classNames(...classes) {
@@ -23,6 +15,16 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const [navigation, setNavigation] = useState(initialNavigation);
+  const location = useLocation();
+
+  useEffect(() => {
+    const updatedNavigation = navigation.map((item) =>
+      item.href === location.pathname ? { ...item, current: true } : { ...item, current: false }
+    );
+    setNavigation(updatedNavigation);
+  }, [location.pathname]);
+
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (

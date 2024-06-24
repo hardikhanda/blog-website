@@ -11,6 +11,7 @@ import Home from './pages/home';
 import About from './pages/about';
 import PostDetail from './pages/PostDetail'
 import EditPost from './pages/EditPost';
+import SearchResults from './pages/SearchResults';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/edit-post/:postId" element={<EditPost />} />
             <Route path="/dashboard/user" element={<UserPage />} />
             <Route path="/posts/:postId" element={<PostDetail />} />
+            <Route path="/searchresults" element={<SearchResults />} />
           </Routes>
         </div>
       </BrowserRouter>

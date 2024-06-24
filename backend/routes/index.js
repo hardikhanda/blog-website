@@ -34,9 +34,10 @@ router.get('/posts/tag/:tag', (req, res, next) => {
     console.log('Tag route accessed');
     next();
 }, getPostsByTag);
-router.get('/posts/search/:query', searchPosts);
+router.get('/posts/search', searchPosts);
 router.post('/posts/:postId/like', likePost);
 router.post('/posts/:postId/comment', addComment);
+
 
 // router.post('/refresh', refreshController.refresh);
 // router.get('/me', auth, userController.me);

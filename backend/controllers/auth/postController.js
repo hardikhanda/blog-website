@@ -96,17 +96,29 @@ export const getPostsByTag = async (req, res) => {
 };
 
 // Search posts by title or content
+// controllers/postController.js
+
+
+
+// Search posts by title or content
 export const searchPosts = async (req, res) => {
   try {
-    const query = req.query.query;
+    const query = req.query.q; // Extract query from request query string
+    if (!query) {
+      return res.status(400).json({ message: 'Query parameter (q) is required' });
+    }
+
+    // Perform case-insensitive search on title or content
     const posts = await Post.find({
       $or: [
-        { title: { $regex: query, $options: 'i' } },
-        { content: { $regex: query, $options: 'i' } },
+        { title: { $regex: query, $options: 'i' } }, // Case-insensitive search for title
+        { content: { $regex: query, $options: 'i' } }, // Case-insensitive search for content
       ],
-    }).populate('author', 'name email');
+    }).populate('author', 'name email'); // Example: Populate author field if necessary
+
     res.status(200).json(posts);
   } catch (error) {
+    console.error('Error searching posts:', error);
     res.status(500).json({ message: 'Error searching posts', error });
   }
 };

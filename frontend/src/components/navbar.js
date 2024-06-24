@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { Link, useLocation } from 'react-router-dom';
+import { BellIcon, XMarkIcon, Bars3Icon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { logout } from '../helper/logout';
 
 const initialNavigation = [
@@ -16,14 +16,25 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const [navigation, setNavigation] = useState(initialNavigation);
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    const updatedNavigation = navigation.map((item) =>
-      item.href === location.pathname ? { ...item, current: true } : { ...item, current: false }
-    );
+    const updatedNavigation = navigation.map(item => ({
+      ...item,
+      current: location.pathname === item.href,
+    }));
     setNavigation(updatedNavigation);
   }, [location.pathname]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim() !== '') {
+      navigate(`/searchresults?query=${encodeURIComponent(searchQuery)}`);
+      setSearchQuery('');
+    }
+  };
 
   return (
     <Disclosure as="nav" className="bg-gray-800">
@@ -69,16 +80,22 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="flex items-center">
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  className="bg-gray-700 text-white rounded-md px-3 py-2 text-sm"
-                />
-                <button className="relative ml-4 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                  <span className="absolute -inset-1.5" />
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+                <form onSubmit={handleSearch} className="flex items-center">
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="bg-gray-700 text-white rounded-md px-3 py-2 text-sm"
+                  />
+                  <button
+                    type="submit"
+                    className="ml-2 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  >
+                    <span className="sr-only">Search</span>
+                    <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
+                  </button>
+                </form>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
@@ -145,8 +162,8 @@ export default function Navbar() {
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
-                  as="a"
-                  href={item.href}
+                  as={Link} // Change from 'a' to 'Link'
+                  to={item.href} // Use 'to' instead of 'href'
                   className={classNames(
                     item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'block rounded-md px-3 py-2 text-base font-medium'

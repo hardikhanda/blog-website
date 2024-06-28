@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Navbar from '../components/navbar';
+import NavbarTitle from '../components/navbarTitle';
 import Footer from '../components/footer';
 
 function Login() {
@@ -42,7 +42,7 @@ function Login() {
 
   return (
     <>
-      <Navbar />
+      <NavbarTitle />
       <section className="text-gray-400 bg-gray-900 body-font">
         <div className="container px-5 py-24 mx-auto flex flex-wrap items-center">
           <div className="lg:w-3/5 md:w-1/2 md:pr-16 lg:pr-0 pr-0">

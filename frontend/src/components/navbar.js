@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { BellIcon, XMarkIcon, Bars3Icon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon, Bars3Icon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { logout } from '../helper/logout';
+
 
 const initialNavigation = [
   { name: 'Home', href: '/home', current: false },
@@ -53,33 +54,36 @@ export default function Navbar() {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <div className="flex flex-shrink-0 items-center">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                    alt="Your Company"
-                  />
-                </div>
-                <div className="hidden sm:ml-6 sm:block">
-                  <div className="flex space-x-4">
-                    {navigation.map((item) => (
-                      <Link
-                        key={item.name}
-                        to={item.href}
-                        className={classNames(
-                          item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                          'rounded-md px-3 py-2 text-sm font-medium'
-                        )}
-                        aria-current={item.current ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
+              <div className="flex items-center">
+                <img
+                  src={`${process.env.PUBLIC_URL}/logo.png`}
+                  alt="PEC Impulse Logo"
+                  style={{
+                    height: '120px', // Adjust the height to fit your navbar
+                    width: 'auto',
+                    marginLeft: '15px', // Maintain aspect ratio
+                  }}
+                />
+                
+              </div>
+              <div className="hidden sm:flex sm:ml-4">
+                <div className="flex space-x-4">
+                  {navigation.map((item) => (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={classNames(
+                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                        'rounded-md px-3 py-2 text-sm font-medium'
+                      )}
+                      aria-current={item.current ? 'page' : undefined}
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
                 </div>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center ml-auto">
                 <form onSubmit={handleSearch} className="flex items-center">
                   <input
                     type="text"
@@ -162,8 +166,8 @@ export default function Navbar() {
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
-                  as={Link} // Change from 'a' to 'Link'
-                  to={item.href} // Use 'to' instead of 'href'
+                  as={Link}
+                  to={item.href}
                   className={classNames(
                     item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                     'block rounded-md px-3 py-2 text-base font-medium'

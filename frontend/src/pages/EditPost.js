@@ -11,6 +11,7 @@ function EditPost() {
   const [content, setContent] = useState('');
   const [tags, setTags] = useState('');
   const [error, setError] = useState(null);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -53,7 +54,12 @@ function EditPost() {
         throw new Error('Failed to update post');
       }
 
-      navigate(`/posts/${postId}`); // Navigate to post detail page after successful update
+      setShowSuccess(true);
+      // Automatically hide success message after 5 seconds
+      setTimeout(() => {
+        setShowSuccess(false);
+      }, 5000);
+
     } catch (error) {
       setError(error.message);
     }
@@ -66,6 +72,14 @@ function EditPost() {
         <div className="mx-auto max-w-2xl px-6 lg:px-8">
           <h1 className="text-3xl font-bold text-white mb-6">Edit Post</h1>
           {error && <p className="text-red-500">{error}</p>}
+          {showSuccess && (
+            <div className="bg-green-100 rounded-lg p-4 mb-4 text-sm text-green-700">
+              <svg className="w-5 h-5 inline mr-3" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd"></path>
+              </svg>
+              <span className="font-medium">Success!</span> Post updated successfully.
+            </div>
+          )}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="title" className="block text-sm font-medium text-gray-400">

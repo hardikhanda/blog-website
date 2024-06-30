@@ -41,6 +41,23 @@ export const getAllPostsByUser = async (req, res) => {
     res.status(500).json({ message: 'Error retrieving posts', error });
   }
 };
+export const getLikesPerPostByUser = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const posts = await Post.find({ author: userId });
+
+    // Construct data array with post title and likes
+    const likesPerPost = posts.map(post => ({
+      title: post.title,
+      likes: post.likes
+    }));
+
+    res.status(200).json(likesPerPost);
+  } catch (error) {
+    console.error('Error retrieving likes per post:', error);
+    res.status(500).json({ message: 'Error retrieving likes per post', error });
+  }
+};
 
 // Get a single blog post by ID
 export const getPostById = async (req, res) => {
@@ -161,5 +178,49 @@ export const addComment = async (req, res) => {
     res.status(201).json({ message: 'Comment added successfully', comment });
   } catch (error) {
     res.status(500).json({ message: 'Error adding comment', error });
+  }
+};
+
+// Fetch analytics data for a user
+
+export const getUserAnalyticsData = async (req, res) => {
+  const userId = req.params.userId;
+
+  try {
+    // Total posts count by the user
+    const totalPosts = await Post.countDocuments({ author: userId });
+
+    // Total likes count by the user
+    const totalLikes = await Post.aggregate([
+      { $match: { author: userId } },
+      { $group: { _id: null, totalLikes: { $sum: '$likes' } } }
+    ]);
+
+    // Likes per post by the user
+    const likesPerPost = await Post.aggregate([
+      { $match: { author: userId } },
+      { 
+        $group: { 
+          _id: '$_id', // Grouping by post id
+          title: { $first: '$title' }, // Keep the title of the post
+          likes: { $sum: '$likes' } // Sum up the likes for each post
+        } 
+      },
+      { $sort: { likes: -1 } },
+      { $limit: 5 } // Adjust limit as per your requirement
+    ]);
+
+    // Most liked post by the user
+    const mostLikedPost = await Post.findOne({ author: userId }).sort({ likes: -1 }).limit(1);
+
+    res.status(200).json({
+      totalPosts,
+      totalLikes: totalLikes.length > 0 ? totalLikes[0].totalLikes : 0,
+      likesPerPost,
+      mostLikedPost
+    });
+  } catch (error) {
+    console.error('Error fetching user analytics data:', error);
+    res.status(500).json({ message: 'Error fetching user analytics data', error });
   }
 };

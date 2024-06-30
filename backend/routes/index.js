@@ -15,7 +15,9 @@ import {
   searchPosts, 
   getAllPostsByUser, 
   likePost, 
-  addComment 
+  addComment,
+  getLikesPerPostByUser,
+  getUserAnalyticsData
 } from '../controllers/auth/postController.js';
 
 router.post('/register', registerController.register);
@@ -37,6 +39,9 @@ router.get('/posts/tag/:tag', (req, res, next) => {
 router.get('/posts/search', searchPosts);
 router.post('/posts/:postId/like', likePost);
 router.post('/posts/:postId/comment', addComment);
+router.get('/posts/likes/:userId', getLikesPerPostByUser);
+router.get('/analytics/user/:userId', getUserAnalyticsData);
+
 
 
 // router.post('/refresh', refreshController.refresh);

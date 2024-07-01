@@ -197,21 +197,13 @@ export const getUserAnalyticsData = async (req, res) => {
     ]);
 
     // Likes per post by the user
-    const likesPerPost = await Post.aggregate([
-      { $match: { author: userId } },
-      { 
-        $group: { 
-          _id: '$_id', // Grouping by post id
-          title: { $first: '$title' }, // Keep the title of the post
-          likes: { $sum: '$likes' } // Sum up the likes for each post
-        } 
-      },
-      { $sort: { likes: -1 } },
-      { $limit: 5 } // Adjust limit as per your requirement
-    ]);
+    const likesPerPost = await Post.find({ author: userId }).select('title likes');
 
     // Most liked post by the user
     const mostLikedPost = await Post.findOne({ author: userId }).sort({ likes: -1 }).limit(1);
+    console.log('Total Likes:', totalLikes);
+    
+
 
     res.status(200).json({
       totalPosts,
@@ -224,3 +216,4 @@ export const getUserAnalyticsData = async (req, res) => {
     res.status(500).json({ message: 'Error fetching user analytics data', error });
   }
 };
+

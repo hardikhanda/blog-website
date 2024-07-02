@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/navbar';
 import Sidebar from '../components/sidebar';
 import Footer from '../components/footer';
+import BottomNavigationBar from '../components/BottomNavigationBar';
 
 function Dashboard() {
   const [userData, setUserData] = useState(null);
@@ -41,7 +42,7 @@ function Dashboard() {
   }, []);
 
   useEffect(() => {
-    if (userData && userData._id) { // Ensure userData and userData._id are not null
+    if (userData && userData._id) {
       const fetchRecentPosts = async () => {
         try {
           const response = await fetch(`/api/posts/user/${userData._id}`, {
@@ -65,7 +66,7 @@ function Dashboard() {
 
       fetchRecentPosts();
     }
-  }, [userData]); // Watch for changes in userData
+  }, [userData]);
 
   const handleDeletePost = async (postId) => {
     try {
@@ -100,7 +101,7 @@ function Dashboard() {
       <Navbar />
       <div className="sm:flex">
         <div className="hidden sm:block">
-          {userData._id && <Sidebar userId={userData._id} />} {/* Ensure userData._id is defined */}
+          {userData._id && <Sidebar userId={userData._id} />}
         </div>
         <div className="sm:flex-1">
           {error && <p className="text-red-500">{error}</p>}
@@ -108,12 +109,10 @@ function Dashboard() {
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
               <h1 className="text-3xl font-bold text-white text-center mb-6">Welcome, {userData.name}! Explore Your Dashboard</h1>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {/* Quick Stats and Recent Posts section */}
                 <div className="bg-gray-800 shadow-md rounded-lg p-6">
                   <h2 className="text-xl text-white font-semibold mb-4">Quick Stats</h2>
                   <p className="text-white">Total Posts: {recentPosts.length}</p>
                   <p className="text-white">Total Likes: {totalLikes}</p>
-                  {/* Add more stats here as needed */}
                 </div>
                 <div className="bg-gray-800 shadow-md rounded-lg p-6 md:col-span-2 lg:col-span-1" style={{ maxHeight: '400px', overflowY: 'auto', scrollbarWidth: 'thin', scrollbarColor: 'gray' }}>
                   <h2 className="text-xl text-white font-semibold mb-4">Recent Posts</h2>
@@ -123,7 +122,7 @@ function Dashboard() {
                         <div key={post._id} className="mb-4 p-4 bg-gray-700 rounded-lg">
                           <div className="flex justify-between items-center">
                             <div>
-                              <Link to={`/post/${post._id}`} className="text-blue-500 hover:underline">
+                              <Link to={`/posts/${post._id}`} className="text-blue-500 hover:underline">
                                 {post.title}
                               </Link>
                               <span className="ml-2 text-gray-300 text-sm">
@@ -153,8 +152,6 @@ function Dashboard() {
                     <p className="text-white">No recent posts found.</p>
                   )}
                 </div>
-                
-                {/* Analytics, Profile, Settings, Create Post section */}
                 <div className="bg-gray-800 shadow-md rounded-lg p-6">
                   <h2 className="text-xl text-white font-semibold mb-4">Analytics</h2>
                   <p className="text-white">Views: 1500</p>
@@ -185,6 +182,7 @@ function Dashboard() {
         </div>
       </div>
       <Footer />
+      <BottomNavigationBar />
     </>
   );
 }

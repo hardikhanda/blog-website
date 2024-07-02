@@ -14,6 +14,7 @@ import EditPost from './pages/EditPost';
 import SearchResults from './pages/SearchResults';
 import TagPage from './pages/TagPage';
 import Analytics from './pages/Analytics';
+import RecentPosts from './pages/RecentPosts';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             <Route path="/posts/tag/:tag" element={<TagPage />} />
             <Route path="/searchresults" element={<SearchResults />} />
             <Route path="/analytics/:userId" element={<Analytics />} />
+            <Route path="/dashboard/recent-posts" element={<RecentPosts />} />
           </Routes>
         </div>
       </BrowserRouter>

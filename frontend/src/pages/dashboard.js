@@ -182,7 +182,9 @@ function Dashboard() {
         </div>
       </div>
       <Footer />
-      <BottomNavigationBar />
+      <div className="block sm:hidden">
+        <BottomNavigationBar />
+      </div>
     </>
   );
 }

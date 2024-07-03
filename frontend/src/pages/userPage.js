@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Box, Heading, Text, Card, Inset } from '@radix-ui/themes';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import BottomNavigationBar from '../components/BottomNavigationBar';
 
 
 function UserPage() {
@@ -82,6 +83,9 @@ function UserPage() {
   <br></br>
   <br></br>
   <Footer/>
+  <div className="block sm:hidden">
+        <BottomNavigationBar />
+  </div>
   </>
   );
 }

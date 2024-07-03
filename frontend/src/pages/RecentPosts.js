@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/navbar';
 import Sidebar from '../components/sidebar';
 import Footer from '../components/footer';
+import BottomNavigationBar from '../components/BottomNavigationBar';
 
 function RecentPosts() {
   const [userData, setUserData] = useState(null);
@@ -168,6 +169,9 @@ function RecentPosts() {
         </div>
       </div>
       <Footer />
+      <div className="block sm:hidden">
+        <BottomNavigationBar />
+      </div>
     </>
   );
 }

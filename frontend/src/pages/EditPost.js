@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import BottomNavigationBar from '../components/BottomNavigationBar';
 
 function EditPost() {
   const { postId } = useParams();
-  const navigate = useNavigate(); // Hook for navigation
 
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -90,7 +90,7 @@ function EditPost() {
                 id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="mt-1 block w-full border-gray-700 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                className="mt-1 block w-full bg-gray-800 border border-gray-700 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 text-white px-3 py-2"
                 required
               />
             </div>
@@ -102,7 +102,7 @@ function EditPost() {
                 id="content"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                className="mt-1 block w-full border-gray-700 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                className="mt-1 block w-full bg-gray-800 border border-gray-700 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 text-white px-3 py-2"
                 rows="6"
                 required
               ></textarea>
@@ -116,7 +116,7 @@ function EditPost() {
                 id="tags"
                 value={tags}
                 onChange={(e) => setTags(e.target.value)}
-                className="mt-1 block w-full border-gray-700 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
+                className="mt-1 block w-full bg-gray-800 border border-gray-700 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 text-white px-3 py-2"
               />
             </div>
             <div className="flex justify-end">
@@ -131,6 +131,9 @@ function EditPost() {
         </div>
       </div>
       <Footer />
+      <div className="block sm:hidden">
+        <BottomNavigationBar />
+      </div>
     </>
   );
 }

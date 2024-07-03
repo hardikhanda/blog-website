@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
+import BottomNavigationBar from '../components/BottomNavigationBar';
 
 function PostDetail() {
   const { postId } = useParams();
@@ -101,34 +102,33 @@ function PostDetail() {
   return (
     <>
       <Navbar />
-      <div className="bg-gray-900 text-gray-100 py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <article className="flex max-w-xl flex-col items-start justify-between shadow-md rounded-xl p-6 bg-gray-800">
-            <div className="flex items-center gap-x-4 text-xs">
+      <div className="bg-gray-900 text-gray-100 py-24 sm:py-32 flex justify-center">
+        <div className="max-w-4xl w-full px-6 lg:px-8">
+          <article className="flex flex-col items-start justify-between shadow-md rounded-xl p-6 bg-gray-800">
+            <div className="flex items-center gap-x-4 text-sm mb-4">
               <time dateTime={post.createdAt} className="text-gray-400">
                 {new Date(post.createdAt).toLocaleDateString()}
               </time>
-              <div>
-                {post.tags.slice(0, 3).map((tag, index) => (
+              <div className="flex flex-wrap gap-x-2">
+                {post.tags.map((tag, index) => (
                   <a
                     key={index}
                     href={`/posts/tag/${tag}`}
-                    className="relative z-10 rounded-full bg-gray-600 px-3 py-1.5 font-medium hover:bg-gray-700 mr-2"
+                    className="relative z-10 rounded-full bg-gray-600 px-3 py-1.5 font-medium hover:bg-gray-700"
                   >
                     {tag}
                   </a>
                 ))}
-                {post.tags.length > 3 && <span className="text-gray-600">+{post.tags.length - 3} more</span>}
               </div>
             </div>
-            <div className="group relative mt-4">
-              <h3 className="mt-3 text-lg font-semibold leading-6">
+            <div className="group relative">
+              <h3 className="text-2xl font-semibold leading-8 mb-4">
                 {post.title}
               </h3>
-              <p className="mt-2 text-sm leading-6">{post.content}</p>
+              <p className="text-lg leading-7">{post.content}</p>
             </div>
-            <div className="flex items-center gap-x-4 mt-4">
-              <span className="text-gray-400">{post.author.name}</span> {/* Display author's name */}
+            <div className="flex items-center gap-x-4 mt-6">
+              <span className="text-gray-400">{post.author.name}</span>
               {!hasLiked && (
                 <button
                   onClick={handleLike}
@@ -143,6 +143,9 @@ function PostDetail() {
         </div>
       </div>
       <Footer />
+      <div className="block sm:hidden">
+        <BottomNavigationBar />
+      </div>
     </>
   );
 }

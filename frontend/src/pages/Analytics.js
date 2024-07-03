@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-import Sidebar from '../components/sidebar'; // Import the Sidebar component
+import Sidebar from '../components/sidebar';
+import BottomNavigationBar from '../components/BottomNavigationBar'; // Import the Sidebar component
 import { useParams } from 'react-router-dom';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
@@ -147,6 +148,9 @@ const Analytics = () => {
         </div>
       </div>
       <Footer />
+      <div className="block sm:hidden">
+        <BottomNavigationBar />
+      </div>
     </>
   );
 };

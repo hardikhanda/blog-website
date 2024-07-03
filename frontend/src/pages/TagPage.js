@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-
+import BottomNavigationBar from '../components/BottomNavigationBar';
 function TagPage() {
   const { tag } = useParams(); // Get tag parameter from URL
   const [taggedPosts, setTaggedPosts] = useState([]);
@@ -78,6 +78,9 @@ function TagPage() {
         </div>
       </div>
       <Footer />
+      <div className="block sm:hidden">
+        <BottomNavigationBar />
+      </div>
     </>
   );
 }

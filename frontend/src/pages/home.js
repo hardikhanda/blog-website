@@ -74,14 +74,13 @@ function Home() {
   return (
     <>
       <Navbar />
-      <div className="bg-gray-900 text-gray-100 py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 flex">
+      <div className="bg-gray-900 text-gray-100">
+        <div className="flex">
           {/* Sidebar */}
-          <div className="hidden sm:block">
-            <Sidebar />
-          </div>
+          <Sidebar className="sticky top-0 h-screen" />
+          
           {/* Main Content */}
-          <div className="flex-1 ml-8">
+          <div className="flex-1 ml-4 pt-16 px-6 lg:px-8"> {/* Adjusted ml-4 to reduce margin */}
             <div className="mx-auto max-w-2xl lg:mx-0">
               <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
                 Empowering Engineers, Inspiring Innovations
@@ -163,7 +162,9 @@ function Home() {
             </div>
           </div>
         </div>
+        <br></br>
       </div>
+      
       <Footer />
       <div className="block sm:hidden">
         <BottomNavigationBar />

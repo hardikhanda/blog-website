@@ -118,7 +118,7 @@ const Sidebar = () => {
                 Recent Posts
               </Link>
               <Link
-                to="/profile"
+                to="/dashboard/user"
                 className="flex items-center px-4 py-2 text-sm font-medium text-gray-100 rounded-lg hover:bg-gray-700"
               >
                 <div className="grid place-items-center mr-4">

@@ -20,7 +20,7 @@ function About() {
                 Our Story
               </h2>
               <p className="leading-relaxed mb-8">
-                Founded with a passion for enhancing collaboration and learning within PEC, PEC Pulse was established in [Year] by a group of enthusiastic students and faculty members. Our mission is to provide a platform where every member of the PEC community can freely interact, share knowledge, and inspire each other to reach new heights.
+                Founded with a passion for enhancing collaboration and learning within PEC, PEC Pulse was established in 2024 by a group of enthusiastic students and faculty members. Our mission is to provide a platform where every member of the PEC community can freely interact, share knowledge, and inspire each other to reach new heights.
               </p>
               <h2 className="title-font font-medium text-2xl text-white mb-4">
                 Our Values
@@ -31,22 +31,13 @@ function About() {
               <h2 className="title-font font-medium text-2xl text-white mb-4">
                 Meet Our Team
               </h2>
-              <div className="flex flex-wrap -m-4">
-                <div className="p-4 sm:w-1/2">
+              <div className="flex flex-wrap -m-4 justify-center">
+                <div className="p-4 lg:w-2/3">
                   <div className="bg-gray-800 bg-opacity-50 rounded-lg p-8">
-                    <h3 className="text-white text-lg font-medium title-font mb-5">Founder & CEO</h3>
-                    <p className="leading-relaxed mb-4">
-                      [Your Name]
-                      [Brief description of your background and vision for PEC Pulse]
-                    </p>
-                  </div>
-                </div>
-                <div className="p-4 sm:w-1/2">
-                  <div className="bg-gray-800 bg-opacity-50 rounded-lg p-8">
-                    <h3 className="text-white text-lg font-medium title-font mb-5">Co-founder</h3>
-                    <p className="leading-relaxed mb-4">
-                      [Co-founder's Name]
-                      [Brief description of their role and contributions]
+                    <h3 className="text-white text-lg font-medium title-font mb-5 text-center">Founder & CEO</h3>
+                    <p className="leading-relaxed mb-4 text-center">
+                      Hardik Handa,
+                      I am currently a third-year student pursuing BTech in Computer Science at Punjab Engineering College (PEC), Chandigarh. My journey at PEC has been enriched with a passion for technology, community engagement, and innovation.PEC Pulse aims to serve as the vibrant heartbeat of our campus, connecting students, faculty, alumni, and stakeholders. Through timely updates, engaging content, and inclusive features, PEC Pulse strives to foster unity, celebrate achievements, and enhance the overall experience at PEC. Our vision is to create a dynamic platform that amplifies voices, highlights talents, and promotes a sense of pride and belonging within the PEC community.
                     </p>
                   </div>
                 </div>
@@ -76,7 +67,7 @@ function About() {
                 Contact Us
               </h2>
               <p className="leading-relaxed mb-8">
-                Have questions or feedback? We'd love to hear from you! Reach out to us via email at [Your Email] or connect with us on [Social Media Handles].
+                Have questions or feedback? We'd love to hear from you! Reach out to us via email at hardik.handa.03@gmail.com or connect with us on @pecimpulse_insta @pecimpulse_facebook.
               </p>
             </div>
           </div>

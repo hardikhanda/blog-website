@@ -94,7 +94,7 @@ function RecentPosts() {
       <Navbar />
       <div className="sm:flex">
         <div className="hidden sm:block">
-          {userData._id && <Sidebar userId={userData._id} />} {/* Ensure userData._id is defined */}
+          {userData._id && <Sidebar />}
         </div>
         <div className="sm:flex-1">
           {error && <p className="text-red-500">{error}</p>}
@@ -112,21 +112,23 @@ function RecentPosts() {
                 {recentPosts.length > 0 ? (
                   recentPosts.map((post) => (
                     <article key={post._id} className="flex max-w-xl flex-col items-start justify-between shadow-md rounded-xl p-6 bg-gray-800">
-                      <div className="flex items-center gap-x-4 text-xs">
+                      <div className="flex items-center gap-x-4 text-xs flex-wrap">
                         <time dateTime={post.createdAt} className="text-gray-400">
                           {new Date(post.createdAt).toLocaleDateString()}
                         </time>
-                        <div>
+                        <div className="flex flex-wrap gap-x-2">
                           {post.tags.slice(0, 3).map((tag, index) => (
                             <a
                               key={index}
                               href={`/posts/tag/${tag}`}
-                              className="relative z-10 rounded-full bg-gray-600 px-3 py-1.5 font-medium hover:bg-gray-700 mr-2"
+                              className="relative z-10 rounded-full bg-gray-600 px-3 py-1.5 font-medium hover:bg-gray-700 mr-2 mb-2"
                             >
                               {tag}
                             </a>
                           ))}
-                          {post.tags.length > 3 && <span className="text-gray-600">+{post.tags.length - 3} more</span>}
+                          {post.tags.length > 3 && (
+                            <span className="text-gray-600">+{post.tags.length - 3} more</span>
+                          )}
                         </div>
                       </div>
                       <div className="group relative mt-4">

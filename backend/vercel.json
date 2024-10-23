@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/server.js"
+      }
+    ],
+    "env": {
+      "MONGO_URI": "mongodb+srv://hardikhandabt22cse:pBHDqJQRwCz0RSTm@cluster0.svmyngd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+      "JWT_SECRET": "changeme",
+      "REFRESH_SECRET": "changemeR",
+      "PORT": "5000"
+    }
+  }
+  

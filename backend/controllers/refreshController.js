@@ -1,8 +1,8 @@
 import Joi from 'joi';
 const REFRESH_SECRET = "changemeR";
-import { User } from '../../models/users.js';
-import { RefreshToken } from '../../models/refreshToken.js';
-import JwtService from '../../services/JwtService.js';
+import { User } from '../models/users.js';
+import { RefreshToken } from '../models/refreshToken.js';
+import JwtService from '../services/JwtService.js';
 
 const refreshController = {
     async refresh(req, res, next) {

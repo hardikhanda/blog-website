@@ -1,10 +1,10 @@
 import express from 'express';
 const router = express.Router();
-import registerController from '../controllers/auth/registerController.js';
-import loginController from '../controllers/auth/loginController.js';
+import registerController from '../controllers/registerController.js';
+import loginController from '../controllers/loginController.js';
 import auth from '../middleware/auth.js';
-import userController from '../controllers/auth/userController.js';
-import refreshController from '../controllers/auth/refreshController.js';
+import userController from '../controllers/userController.js';
+import refreshController from '../controllers/refreshController.js';
 import { 
   createPost, 
   getAllPosts, 
@@ -18,7 +18,7 @@ import {
   addComment,
   getLikesPerPostByUser,
   getUserAnalyticsData
-} from '../controllers/auth/postController.js';
+} from '../controllers/postController.js';
 
 router.post('/register', registerController.register);
 router.post('/login', loginController.login);

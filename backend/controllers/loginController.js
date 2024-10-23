@@ -1,8 +1,8 @@
 import Joi from 'joi';
-import { User } from '../../models/users.js'
-import { RefreshToken } from '../../models/refreshToken.js'
+import { User } from '../models/users.js'
+import { RefreshToken } from '../models/refreshToken.js'
 import bcrypt from 'bcrypt';
-import JwtService from '../../services/JwtService.js';
+import JwtService from '../services/JwtService.js';
 const REFRESH_SECRET = "changemeR";
 
 

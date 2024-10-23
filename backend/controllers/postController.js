@@ -1,5 +1,5 @@
-import { Post } from '../../models/blog.js';
-import { Comment } from '../../models/comment.js';
+import { Post } from '../models/blog.js';
+import { Comment } from '../models/comment.js';
 
 // Create a new blog post
 export const createPost = async (req, res) => {

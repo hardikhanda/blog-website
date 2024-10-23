@@ -1,52 +1,38 @@
 import express from 'express';
-import path from 'path'
 const app = express();
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 import router from './routes/index.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import cors from 'cors'
-import http from 'http'
-
-
-
+import bodyParser from 'body-parser';
 dotenv.config();
-app.use(cors(
-  {
-
-
-
-  
-      origin:  [process.env.ALLOWED_ORIGIN],
-
-
-      credentials: true
-  }
-));
 app.use(express.json())
+app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 4000
+const PORT = process.env.PORT || 5000
 
-
+app.get("/", function (req,res){
+  res.sendFile(
+  path.join(__dirname,"../frontend/build/index.html"),
+  function (err) {
+    if (err) {
+   res.status(500).send(err);
+    }
+  }
+);
+});
 
 //routes
-app.get("/", (req, res) => {
-  res.json("Hello");
-})
 app.use('/api', router)
 
 
-mongoose.connect('mongodb+srv://hardikhandabt22cse:pBHDqJQRwCz0RSTm@cluster0.svmyngd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
-
-
-mongoose.connection.on('error',err=>{
-  console.log('connection failed');
-});
-
-mongoose.connection.on('connected',()=>{
-  console.log('connected successfully with database');
-});
-
-const server = http.createServer(app);
-server.listen(PORT,()=>{console.log('this app is running on '+PORT)});
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('connected to database')
+    // listen to port
+    app.listen(PORT, () => {
+      console.log('listening for requests on port', PORT)
+    })
+  })
+  .catch((err) => {
+    console.log(err)
+  }) 

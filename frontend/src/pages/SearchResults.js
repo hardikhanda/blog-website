@@ -94,11 +94,11 @@ const SearchResults = () => {
             {filteredPosts.map((post) => (
               <article key={post._id} className="flex flex-col items-start justify-between shadow-md rounded-xl bg-gray-800">
                 <div className="p-6 w-full">
-                  <div className="flex items-center gap-x-4 text-xs">
+                  <div className="flex items-center gap-x-4 text-xs flex-wrap"> {/* Added flex-wrap */}
                     <time dateTime={post.createdAt} className="text-gray-400">
                       {new Date(post.createdAt).toLocaleDateString()}
                     </time>
-                    <div className="flex flex-wrap gap-x-2">
+                    <div className="flex flex-wrap gap-x-2 gap-y-2"> {/* Ensuring tags wrap correctly */}
                       {post.tags.slice(0, 3).map((tag, index) => (
                         <a
                           key={index}

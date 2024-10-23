@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import BottomNavigationBar from '../components/BottomNavigationBar';
+
 function TagPage() {
   const { tag } = useParams(); // Get tag parameter from URL
   const [taggedPosts, setTaggedPosts] = useState([]);
@@ -39,11 +40,11 @@ function TagPage() {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {taggedPosts.map((post) => (
               <article key={post._id} className="flex flex-col items-start justify-between shadow-md rounded-xl p-6 bg-gray-800">
-                <div className="flex items-center gap-x-4 text-xs">
+                <div className="flex items-center gap-x-4 text-xs flex-wrap"> {/* Added flex-wrap */}
                   <time dateTime={post.createdAt} className="text-gray-400">
                     {new Date(post.createdAt).toLocaleDateString()}
                   </time>
-                  <div>
+                  <div className="flex flex-wrap gap-2"> {/* Ensuring tags wrap correctly */}
                     {post.tags.slice(0, 3).map((tag, index) => (
                       <Link
                         key={index}

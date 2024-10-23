@@ -1,15 +1,5 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import {
-  Box,
-  Button,
-  Card,
-  Flex,
-  Heading,
-  Text,
-  TextField
-} from '@radix-ui/themes'; // Adjusted import based on the available package
-
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 
@@ -77,7 +67,8 @@ function SignUp() {
                 <label htmlFor="name" className="leading-7 text-sm text-gray-400">
                   Name
                 </label>
-                <TextField.Root
+                <input
+                  type="text"
                   id="name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -89,7 +80,7 @@ function SignUp() {
                 <label htmlFor="email" className="leading-7 text-sm text-gray-400">
                   Email
                 </label>
-                <TextField.Root
+                <input
                   type="email"
                   id="email"
                   value={email}
@@ -102,7 +93,7 @@ function SignUp() {
                 <label htmlFor="password" className="leading-7 text-sm text-gray-400">
                   Password
                 </label>
-                <TextField.Root
+                <input
                   type="password"
                   id="password"
                   value={password}
@@ -115,7 +106,7 @@ function SignUp() {
                 <label htmlFor="repeat-password" className="leading-7 text-sm text-gray-400">
                   Repeat Password
                 </label>
-                <TextField.Root
+                <input
                   type="password"
                   id="repeat-password"
                   value={repeatPassword}
@@ -124,9 +115,12 @@ function SignUp() {
                   required
                 />
               </div>
-              <Button type="submit" className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+              <button
+                type="submit"
+                className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+              >
                 Sign Up
-              </Button>
+              </button>
               <p className="text-xs mt-3">{errorMessage}</p>
               <p className="text-xs mt-3">
                 Already have an account?{' '}

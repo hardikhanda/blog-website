@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/navbar';
-import Sidebar from '../components/sidebar';
 import Footer from '../components/footer';
 import BottomNavigationBar from '../components/BottomNavigationBar';
+import Sidebar from '../components/sidebar';
 
 function Dashboard() {
   const [userData, setUserData] = useState(null);
@@ -99,13 +99,14 @@ function Dashboard() {
   return (
     <>
       <Navbar />
-      <div className="sm:flex">
-        <div className="hidden sm:block">
-          {userData._id && <Sidebar userId={userData._id} />}
-        </div>
-        <div className="sm:flex-1">
+      <div className="flex min-h-screen bg-gray-900 text-gray-100"> {/* Set consistent background color */}
+        {/* Sidebar */}
+        <Sidebar className="sticky top-0 h-screen" />
+        
+        {/* Main Content */}
+        <div className="flex-1 ml-4 pt-16 px-6 lg:px-8 bg-gray-900"> {/* Ensure background matches */}
           {error && <p className="text-red-500">{error}</p>}
-          <div className="bg-gray-900 text-gray-100 py-24 sm:py-32">
+          <div className="py-24 sm:py-32"> {/* Removed extra background class */}
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
               <h1 className="text-3xl font-bold text-white text-center mb-6">Welcome, {userData.name}! Explore Your Dashboard</h1>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -14,11 +14,11 @@ dotenv.config();
 
 const app = express();
 
-// Middleware to handle CORS (add allowed origins if necessary)
-// app.use(cors({
-//   origin: [process.env.ALLOWED_ORIGIN],
-//   credentials: true
-// }));
+Middleware to handle CORS (add allowed origins if necessary)
+app.use(cors({
+  origin: [process.env.ALLOWED_ORIGIN],
+  credentials: true
+}));
 
 // Middleware to parse JSON and request body
 app.use(express.json());

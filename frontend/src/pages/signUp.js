@@ -16,11 +16,11 @@ function SignUp() {
 
     if (password !== repeatPassword) {
       setErrorMessage('Passwords do not match.');
-      return;
+      return
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/register', {
+      const response = await fetch('https://blog-website-ahx4emvjk-hardiks-projects-4e48b636.vercel.app/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

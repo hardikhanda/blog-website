@@ -14,7 +14,7 @@ dotenv.config();
 
 const app = express();
 
-Middleware to handle CORS (add allowed origins if necessary)
+// Middleware to handle CORS (add allowed origins if necessary)
 app.use(cors({
   origin: [process.env.ALLOWED_ORIGIN],
   credentials: true
@@ -47,10 +47,7 @@ app.get("/", (req, res) => {
 app.use('/api', router);
 
 // Connect to MongoDB using MONGO_URI from environment variables
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
+mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log('Connected to the database successfully');
 

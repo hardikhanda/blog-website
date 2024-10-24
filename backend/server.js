@@ -31,17 +31,12 @@ const __dirname = dirname(__filename);
 // Define port
 const PORT = process.env.PORT || 5000;
 
-// Serve static frontend files (assuming you have a React build folder)
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+
 
 // Route for root (testing if server works)
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build/index.html'), function (err) {
-    if (err) {
-      res.status(500).send(err);
-    }
+  res.send("hello hrdik");
   });
-});
 
 // API routes
 app.use('/api', router);

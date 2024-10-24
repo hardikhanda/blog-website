@@ -20,9 +20,8 @@ function SignUp() {
     }
 
     try {
-      const response = await fetch(`https://blog-website-delta-ecru.vercel.app/api/register`, {
+      const response = await fetch('http://localhost:5000/api/register', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },

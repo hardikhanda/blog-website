@@ -16,7 +16,7 @@ const app = express();
 
 // Middleware to handle CORS (add allowed origins if necessary)
 app.use(cors({
-  origin: [process.env.ALLOWED_ORIGIN],
+  origin: 'https://pec-impulse-frontend.vercel.app',
   methods: 'GET,POST,PUT,DELETE',
   credentials: true
 }));

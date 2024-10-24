@@ -20,7 +20,7 @@ function SignUp() {
     }
 
     try {
-      const response = await fetch('/api/register', {
+      const response = await fetch(`https://blog-website-delta-ecru.vercel.app/api/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

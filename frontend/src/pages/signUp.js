@@ -20,7 +20,7 @@ function SignUp() {
     }
 
     try {
-      const response = await fetch('https://blog-website-ahx4emvjk-hardiks-projects-4e48b636.vercel.app/api/register', {
+      const response = await fetch('https://blog-website-8gw4.vercel.app/api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -20,7 +20,7 @@ function Dashboard() {
           throw new Error('Access token not found');
         }
 
-        const response = await fetch('/api/me', {
+        const response = await fetch('https://blog-website-8gw4.vercel.app/api/me', {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -45,7 +45,7 @@ function Dashboard() {
     if (userData && userData._id) {
       const fetchRecentPosts = async () => {
         try {
-          const response = await fetch(`/api/posts/user/${userData._id}`, {
+          const response = await fetch(`https://blog-website-8gw4.vercel.app/api/posts/user/${userData._id}`, {
             method: 'GET',
           });
 
@@ -71,7 +71,7 @@ function Dashboard() {
   const handleDeletePost = async (postId) => {
     try {
       const token = localStorage.getItem('accessToken');
-      const response = await fetch(`/api/posts/${postId}`, {
+      const response = await fetch(`https://blog-website-8gw4.vercel.app/api/posts/${postId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,

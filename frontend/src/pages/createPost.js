@@ -24,7 +24,7 @@ function CreatePost() {
           throw new Error('Access token not found');
         }
 
-        const response = await fetch('/api/me', {
+        const response = await fetch('https://blog-website-8gw4.vercel.app/api/me', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -61,7 +61,7 @@ function CreatePost() {
         author: userData ? userData._id : null,
       };
 
-      const response = await fetch('/api/posts', {
+      const response = await fetch('https://blog-website-8gw4.vercel.app/api/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

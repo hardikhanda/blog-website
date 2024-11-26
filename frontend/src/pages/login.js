@@ -13,7 +13,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch('/api/login', {
+      const response = await fetch('https://blog-website-8gw4.vercel.app/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

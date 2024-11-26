@@ -23,7 +23,7 @@ const Analytics = () => {
           throw new Error('Access token not found');
         }
 
-        const response = await fetch(`/api/analytics/user/${userId}`, {
+        const response = await fetch(`https://blog-website-8gw4.vercel.app/api/analytics/user/${userId}`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,

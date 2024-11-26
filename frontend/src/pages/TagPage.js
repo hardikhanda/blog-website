@@ -11,7 +11,7 @@ function TagPage() {
   useEffect(() => {
     const fetchPostsByTag = async () => {
       try {
-        const response = await fetch(`/api/posts/tag/${tag}`);
+        const response = await fetch(`https://blog-website-8gw4.vercel.app/api/posts/tag/${tag}`);
         if (!response.ok) {
           throw new Error('Failed to fetch posts by tag');
         }

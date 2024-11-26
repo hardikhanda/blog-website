@@ -11,7 +11,7 @@ function Home() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch('/api/posts');
+        const response = await fetch('https://blog-website-8gw4.vercel.app/api/posts');
         if (!response.ok) {
           throw new Error('Failed to fetch posts');
         }
@@ -38,7 +38,7 @@ function Home() {
         throw new Error('Access token not found');
       }
 
-      const response = await fetch(`/api/posts/${postId}/like`, {
+      const response = await fetch(`https://blog-website-8gw4.vercel.app/api/posts/${postId}/like`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,

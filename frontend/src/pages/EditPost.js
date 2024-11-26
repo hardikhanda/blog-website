@@ -16,7 +16,7 @@ function EditPost() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await fetch(`/api/posts/${postId}`);
+        const response = await fetch(`https://blog-website-8gw4.vercel.app/api/posts/${postId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch post');
         }
@@ -41,7 +41,7 @@ function EditPost() {
         throw new Error('Access token not found');
       }
 
-      const response = await fetch(`/api/posts/${postId}`, {
+      const response = await fetch(`https://blog-website-8gw4.vercel.app/api/posts/${postId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

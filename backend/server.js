@@ -19,7 +19,7 @@ app.use(cors(
 
 
   
-    origin: 'https://pec-impulse-frontend.vercel.app',
+    origin: 'https://blog-website-nu-five.vercel.app',
 
 
       credentials: true

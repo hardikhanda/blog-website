@@ -16,7 +16,7 @@ const BottomNavigationBar = () => {
           throw new Error('Access token not found');
         }
 
-        const response = await fetch('/api/me', {
+        const response = await fetch('https://blog-website-8gw4.vercel.app/api/me', {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -80,14 +80,13 @@ const BottomNavigationBar = () => {
             onClick={() => handleTooltipToggle('tooltip-wallet')}
           >
             <svg
-              className="w-5 h-5 mb-1 text-gray-400 dark:text-gray-300 group-hover:text-blue-500 dark:group-hover:text-blue-400"
+              className="size-6 w-5 h-5 mb-1 text-gray-400 dark:text-gray-300 group-hover:text-blue-500 dark:group-hover:text-blue-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="size-6"
             >
               <path
                 strokeLinecap="round"
@@ -147,12 +146,11 @@ const BottomNavigationBar = () => {
             onClick={() => handleTooltipToggle('tooltip-recent')}
           >
             <svg
-              className="w-5 h-5 mb-1 text-gray-400 dark:text-gray-300 group-hover:text-blue-500 dark:group-hover:text-blue-400"
+              className="size-6 w-5 h-5 mb-1 text-gray-400 dark:text-gray-300 group-hover:text-blue-500 dark:group-hover:text-blue-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 24 24"
-              className="size-6"
             >
               <path
                 d="M9.97.97a.75.75 0 0 1 1.06 0l3 3a.75.75 0 0 1-1.06 1.06l-1.72-1.72v3.44h-1.5V3.31L8.03 5.03a.75.75 0 0 1-1.06-1.06l3-3ZM9.75 6.75v6a.75.75 0 0 0 1.5 0v-6h3a3 3 0 0 1 3 3v7.5a3 3 0 0 1-3 3h-7.5a3 3 0 0 1-3-3v-7.5a3 3 0 0 1 3-3h3Z"
@@ -185,12 +183,11 @@ const BottomNavigationBar = () => {
             onClick={() => handleTooltipToggle('tooltip-profile')}
           >
             <svg
-              className="w-5 h-5 mb-1 text-gray-400 dark:text-gray-300 group-hover:text-blue-500 dark:group-hover:text-blue-400"
+              className="size-6 w-5 h-5 mb-1 text-gray-400 dark:text-gray-300 group-hover:text-blue-500 dark:group-hover:text-blue-400"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="currentColor"
               viewBox="0 0 24 24"
-              className="size-6"
             >
               <path
                 fillRule="evenodd"

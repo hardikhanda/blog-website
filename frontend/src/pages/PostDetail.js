@@ -14,7 +14,7 @@ function PostDetail() {
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const response = await fetch(`/api/posts/${postId}`);
+        const response = await fetch(`https://blog-website-8gw4.vercel.app/api/posts/${postId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch post');
         }
@@ -40,7 +40,7 @@ function PostDetail() {
           return; // If user is not logged in, do nothing
         }
 
-        const response = await fetch(`/api/posts/${postId}/like/check`, {
+        const response = await fetch(`https://blog-website-8gw4.vercel.app/api/posts/${postId}/like/check`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -66,7 +66,7 @@ function PostDetail() {
         throw new Error('Access token not found');
       }
 
-      const response = await fetch(`/api/posts/${postId}/like`, {
+      const response = await fetch(`https://blog-website-8gw4.vercel.app/api/posts/${postId}/like`, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
